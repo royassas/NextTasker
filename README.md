@@ -1,2 +1,3 @@
 # NextTasker
-Simple Task manager for one-time and recurring events with logging.
+Simple and open source task manager for one-time and recurring events with logging.
+
