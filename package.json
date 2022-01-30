@@ -1,0 +1,34 @@
+{
+  "name": "nexttasker",
+  "version": "0.1.0",
+  "description": "Simple and open source task manager for one-time and recurring tasks with unser management and logging",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royassas/NextTasker.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize",
+    "mariadb",
+    "rest",
+    "api",
+    "react"
+  ],
+  "author": "royassas (Mike Zweifel)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/royassas/NextTasker/issues"
+  },
+  "homepage": "https://github.com/royassas/NextTasker#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mariadb": "^2.5.5",
+    "sequelize": "^6.15.0"
+  }
+}
