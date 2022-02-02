@@ -25,6 +25,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     {
+      paranoid: true,
       hooks: {
         beforeCreate: async user => {
           if (user.password) {

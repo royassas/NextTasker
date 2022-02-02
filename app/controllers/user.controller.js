@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a USer
+  // Create a User
   const user = {
     nickname: req.body.nickname,
     password: req.body.password,

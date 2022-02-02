@@ -9,6 +9,8 @@ module.exports = (sequelize, Sequelize) => {
     published: {
       type: Sequelize.BOOLEAN
     }
+  },{
+    paranoid: true
   });
 
   return Tutorial;

@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8081",
 };
 
 app.use(cors(corsOptions));
@@ -21,12 +21,18 @@ app.get("/", (req, res) => {
 });
 
 const db = require("./app/models");
-db.sequelize.sync().then(() => {
-  console.log("Drop and re-sync db.");
-});
+db.sequelize
+  .sync({ force: true })
+  .then(() => {
+    console.log("Drop and re-sync db.");
+  })
+  .catch((error) => {
+    return console.error(error);
+  });
 
 require("./app/routes/tutorial.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/category.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

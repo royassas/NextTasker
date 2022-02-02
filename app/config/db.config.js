@@ -1,8 +1,9 @@
 module.exports = {
-  HOST: "localhost",
+  HOST: "192.168.2.79",
   USER: "root",
-  PASSWORD: "royassas@once",
-  DB: "testdb",
+  PORT: "3307",
+  PASSWORD: "Zq:566SKPD#;CLu/X6*T",
+  DB: "nexttasker",
   dialect: "mariadb",
   pool: {
     max: 5,
