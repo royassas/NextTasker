@@ -21,16 +21,35 @@ app.get("/", (req, res) => {
 });
 
 const db = require("./app/models");
+const Role = db.role;
+
 db.sequelize
+  // .sync()
   .sync({ force: true })
   .then(() => {
     console.log("Drop and re-sync db.");
+
+    Role.create({
+      id: 1,
+      name: "user",
+    });
+
+    Role.create({
+      id: 2,
+      name: "moderator",
+    });
+
+    Role.create({
+      id: 3,
+      name: "admin",
+    });
   })
   .catch((error) => {
     return console.error(error);
   });
 
 require("./app/routes/tutorial.routes")(app);
+require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/category.routes")(app);
 

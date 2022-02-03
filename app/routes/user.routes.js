@@ -1,19 +1,32 @@
-module.exports = app => {
-  const users = require("../controllers/user.controller.js");
+const { authJwt } = require("../middleware");
+const controller = require("../controllers/user.controller");
 
-  var router = require("express").Router();
+module.exports = function(app) {
+  app.use(function(req, res, next) {
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
 
-  // Create a new User
-  router.post("/", users.create);
+  app.get("/api/test/all", controller.allAccess);
 
-  // Retrieve all Users
-  router.get("/", users.findAll);
+  app.get(
+    "/api/test/user",
+    [authJwt.verifyToken],
+    controller.userBoard
+  );
 
-  // Retrieve a single Tutorial with id
-  router.get("/:id", users.findOne);
+  app.get(
+    "/api/test/mod",
+    [authJwt.verifyToken, authJwt.isModeratorOrAdmin],
+    controller.moderatorBoard
+  );
 
-  // Retrieve auth for user with nickname and password
-  router.post("/auth", users.findAuth);
-
-  app.use("/api/users", router);
+  app.get(
+    "/api/test/admin",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.adminBoard
+  );
 };
