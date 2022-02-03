@@ -1,5 +1,5 @@
 {
-  "name": "nexttasker",
+  "name": "nexttasker-frontend",
   "version": "0.1.0",
   "description": "Simple and open source task manager for one-time and recurring tasks with unser management and logging",
   "main": "server.js",
