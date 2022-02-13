@@ -1,10 +1,13 @@
+const { authJwt, verifyCategory } = require("../middleware");
+const controller = require("../controllers/user.controller");
+
 module.exports = app => {
     const categories = require("../controllers/category.controller.js");
   
     var router = require("express").Router();
   
     // Create a new Category
-    router.post("/", categories.create);
+    router.post("/add", [authJwt.verifyToken, authJwt.isModeratorOrAdmin, verifyCategory.checkDuplicateCategory], categories.create);
   
     // Retrieve all Categories
     router.get("/", categories.findAll);

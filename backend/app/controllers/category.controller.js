@@ -21,7 +21,7 @@ exports.create = (req, res) => {
   // Save Category in the database
   Category.create(category)
     .then(data => {
-      res.send(data);
+      res.send({ message: "Category was added successsfully!" });
     })
     .catch(err => {
       res.status(500).send({
